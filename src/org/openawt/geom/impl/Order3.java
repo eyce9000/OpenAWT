@@ -23,7 +23,7 @@
  * questions.
  */
 
-package sun.awt.geom;
+package org.openawt.geom.impl;
 
 import java.util.Vector;
 

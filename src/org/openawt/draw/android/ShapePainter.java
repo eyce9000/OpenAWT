@@ -30,7 +30,6 @@ public class ShapePainter {
 		}
 		c.drawPath(path, paint);
 	}
-
 	public static Path getPath(PathIterator pi){
 		Path path = new Path();
 		for(;!pi.isDone();pi.next()){

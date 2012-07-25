@@ -25,7 +25,6 @@
 
 package org.openawt.geom;
 
-import sun.awt.geom.Curve;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.Arrays;
@@ -33,6 +32,7 @@ import java.util.Arrays;
 import org.openawt.ArrayHelper;
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.geom.impl.Curve;
 
 
 

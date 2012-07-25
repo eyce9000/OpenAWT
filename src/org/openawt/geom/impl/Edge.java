@@ -23,7 +23,7 @@
  * questions.
  */
 
-package sun.awt.geom;
+package org.openawt.geom.impl;
 
 final class Edge {
     static final int INIT_PARTS = 4;

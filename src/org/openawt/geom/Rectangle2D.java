@@ -314,10 +314,6 @@ public abstract class Rectangle2D extends RectangularShape {
         	return new RectF(x,y,x+width,y+height);
         }
         
-        public java.awt.geom.Rectangle2D.Float toAwtRectangle2D(){
-        	return new java.awt.geom.Rectangle2D.Float(x,y,x+width,y+width);
-        }
-        
     }
 
     /**
@@ -521,9 +517,6 @@ public abstract class Rectangle2D extends RectangularShape {
         	return new RectF((float)x,(float)y,(float)(x+width),(float)(y+height));
         }
         
-        public java.awt.geom.Rectangle2D.Double toAwtRectangle2D(){
-        	return new java.awt.geom.Rectangle2D.Double(x,y,x+width,y+height);
-        }
     }
 
     /**
@@ -957,8 +950,5 @@ public abstract class Rectangle2D extends RectangularShape {
         }
         return false;
     }
-
-    public abstract RectF toRectF();
-    public abstract java.awt.geom.Rectangle2D toAwtRectangle2D();
     
 }

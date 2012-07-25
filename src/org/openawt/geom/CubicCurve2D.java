@@ -30,8 +30,8 @@ import java.io.Serializable;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.geom.impl.Curve;
 
-import sun.awt.geom.Curve;
 
 /**
  * The <code>CubicCurve2D</code> class defines a cubic parametric curve

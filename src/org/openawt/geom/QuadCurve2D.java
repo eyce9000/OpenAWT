@@ -29,8 +29,8 @@ import java.io.Serializable;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.geom.impl.Curve;
 
-import sun.awt.geom.Curve;
 
 /**
  * The <code>QuadCurve2D</code> class defines a quadratic parametric curve

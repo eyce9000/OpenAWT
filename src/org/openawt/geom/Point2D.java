@@ -144,9 +144,6 @@ public abstract class Point2D implements Cloneable {
         	return new android.graphics.PointF(x,y);
         }
 
-        public java.awt.geom.Point2D.Float toAwtPoint(){
-        	return new java.awt.geom.Point2D.Float(x,y);
-        }
     }
 
     /**
@@ -234,9 +231,6 @@ public abstract class Point2D implements Cloneable {
         
         public android.graphics.PointF toAndroidPoint(){
         	return new android.graphics.PointF((float)x,(float)y);
-        }
-        public java.awt.geom.Point2D.Double toAwtPoint(){
-        	return new java.awt.geom.Point2D.Double(x,y);
         }
     }
 
@@ -443,7 +437,4 @@ public abstract class Point2D implements Cloneable {
         }
         return super.equals(obj);
     }
-    
-    public abstract android.graphics.PointF toAndroidPoint();
-    public abstract java.awt.geom.Point2D toAwtPoint();
 }

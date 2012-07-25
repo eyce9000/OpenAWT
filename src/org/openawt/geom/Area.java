@@ -31,10 +31,10 @@ import java.util.NoSuchElementException;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.geom.impl.AreaOp;
+import org.openawt.geom.impl.Crossings;
+import org.openawt.geom.impl.Curve;
 
-import sun.awt.geom.Curve;
-import sun.awt.geom.Crossings;
-import sun.awt.geom.AreaOp;
 
 /**
  * An <code>Area</code> object stores and manipulates a

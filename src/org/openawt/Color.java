@@ -51,7 +51,4 @@ public class Color {
 	public String toString(){
 		return String.format("#%02x%02x%02x",getRed(),getBlue(),getGreen());
 	}
-	public java.awt.Color toAwtColor(){
-		return new java.awt.Color(hex,hasAlpha);
-	}
 }

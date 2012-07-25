@@ -1209,18 +1209,9 @@ public class Rectangle extends Rectangle2D
         return getClass().getName() + "[x=" + x + ",y=" + y + ",width=" + width + ",height=" + height + "]";
     }
 
-	@Override
 	public RectF toRectF() {
 		return new RectF(this.x,this.y,this.x+this.width, this.y+this.height);
 	}
 	
-	public java.awt.Rectangle toAwtRectangle(){
-		return new java.awt.Rectangle(this.x,this.y, this.x+this.width, this.y+this.height);
-	}
-
-	@Override
-	public java.awt.geom.Rectangle2D toAwtRectangle2D() {
-		return new java.awt.Rectangle(x,y,x+width,y+height);
-	}
 
 }

@@ -24,7 +24,6 @@
  */
 package org.openawt;
 
-import sun.awt.geom.Crossings;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -33,6 +32,7 @@ import org.openawt.geom.AffineTransform;
 import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
+import org.openawt.geom.impl.Crossings;
 
 /**
  * The <code>Polygon</code> class encapsulates a description of a

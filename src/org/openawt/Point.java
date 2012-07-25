@@ -232,13 +232,8 @@ public class Point extends Point2D implements java.io.Serializable {
         return getClass().getName() + "[x=" + x + ",y=" + y + "]";
     }
 
-	@Override
 	public PointF toAndroidPoint() {
 		return new android.graphics.PointF(x,y);
 	}
-
-	@Override
-	public java.awt.geom.Point2D toAwtPoint() {
-		return new java.awt.Point(x,y);
-	}
+	
 }
