@@ -1,3 +1,4 @@
 *.class
 bin/*
+build/*
 .DS_Store

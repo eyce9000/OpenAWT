@@ -4,14 +4,14 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
-<project basedir="." default="build" name="openawt">
+<project basedir="." default="build-jar" name="openawt">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
     <path id="openawt.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../../Programming/SDK/android-sdk/platforms/android-8/android.jar"/>
+        <pathelement location="lib/android.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -30,16 +30,17 @@
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <classpath refid="openawt.classpath"/>
         </javac>
     </target>
+	<target name="build-jar" depends="build">
+		<mkdir dir="build" />
+	    <jar destfile="build/openawt.jar"
+	         basedir="bin"
+	         includes="**/*.class"
+	         />
+	</target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-	<target depends="build" name="build-jar">
-					<delete file="openawt.jar" />
-					<jar destfile="openawt.jar"
-								basedir="bin"
-								includes="org/** sun/**" /> 
-		</target>
 </project>
