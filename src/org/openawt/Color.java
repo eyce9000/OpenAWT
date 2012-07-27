@@ -2,7 +2,7 @@ package org.openawt;
 
 
 public class Color {
-	public final int hex;
+	private int hex;
 	
 	public static final Color RED = new Color(0xff0000);
 	public static final Color WHITE = new Color(0xffffff);
@@ -50,5 +50,12 @@ public class Color {
 	}
 	public String toString(){
 		return String.format("#%02x%02x%02x",getRed(),getBlue(),getGreen());
+	}
+	public static Color parse(String value){
+		int red = Integer.parseInt(value.substring(1, 3));
+		int green = Integer.parseInt(value.substring(3, 5));
+		int blue = Integer.parseInt(value.substring(5, 7));
+		return new Color(red,green,blue);
+		
 	}
 }
