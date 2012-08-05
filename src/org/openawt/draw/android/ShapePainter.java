@@ -1,14 +1,22 @@
 package org.openawt.draw.android;
 
+import org.openawt.BasicStroke;
 import org.openawt.Shape;
 import org.openawt.geom.*;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Path.FillType;
 
 public class ShapePainter {
+	public static void draw(Canvas c, Shape s, BasicStroke strokeStyle, Paint paint){
+		if(strokeStyle!=null)
+			applyStrokeStyle(strokeStyle,paint);
+		draw(c,s,paint);
+	}
 	public static void draw(Canvas c, Shape s, Paint paint){
 		if(s!=null){
 			PathIterator pi = s.getPathIterator(null);
@@ -16,6 +24,11 @@ public class ShapePainter {
 			paint.setStyle(Style.STROKE);
 			c.drawPath(path, paint);
 		}
+	}
+	public static void fill(Canvas c, Shape s, BasicStroke strokeStyle,Paint paint){
+		if(strokeStyle!=null)
+			applyStrokeStyle(strokeStyle,paint);
+		fill(c,s,paint);
 	}
 	public static void fill(Canvas c, Shape s, Paint paint){
 		PathIterator pi = s.getPathIterator(null);
@@ -29,6 +42,33 @@ public class ShapePainter {
 			break;
 		}
 		c.drawPath(path, paint);
+	}
+	public static void applyStrokeStyle(BasicStroke strokeStyle, Paint paint){
+		switch(strokeStyle.getEndCap()){
+		case BasicStroke.CAP_BUTT:
+			paint.setStrokeCap(Cap.BUTT);
+			break;
+		case BasicStroke.CAP_ROUND:
+			paint.setStrokeCap(Cap.ROUND);
+			break;
+		case BasicStroke.CAP_SQUARE:
+			paint.setStrokeCap(Cap.SQUARE);
+		}
+		
+		switch(strokeStyle.getLineJoin()){
+		case BasicStroke.JOIN_BEVEL:
+			paint.setStrokeJoin(Join.BEVEL);
+			break;
+		case BasicStroke.JOIN_MITER:
+			paint.setStrokeJoin(Join.MITER);
+			paint.setStrokeMiter(strokeStyle.getMiterLimit());
+			break;
+		case BasicStroke.JOIN_ROUND:
+			paint.setStrokeJoin(Join.ROUND);
+			break;
+		}
+		
+		paint.setStrokeWidth(strokeStyle.getLineWidth());
 	}
 	public static Path getPath(PathIterator pi){
 		Path path = new Path();

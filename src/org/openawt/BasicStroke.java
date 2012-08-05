@@ -25,6 +25,9 @@
 
 package org.openawt;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementArray;
+
 /**
  * The <code>BasicStroke</code> class defines a basic set of rendering
  * attributes for the outlines of graphics primitives, which are rendered
@@ -148,12 +151,18 @@ public class BasicStroke implements Stroke {
     public final static int CAP_SQUARE = 2;
 
     float width;
-
+    
+    @Attribute
     int join;
+    @Attribute
     int cap;
+
+    @Attribute
     float miterlimit;
 
+    @ElementArray(required=false)
     float dash[];
+    @Attribute
     float dash_phase;
 
     /**
@@ -426,4 +435,5 @@ public class BasicStroke implements Stroke {
 
         return true;
     }
+    
 }

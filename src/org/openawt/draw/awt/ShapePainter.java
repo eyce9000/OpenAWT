@@ -23,7 +23,7 @@ public class ShapePainter {
 		}
 	}
 	public static void setColor(Graphics2D g2d, Color color){
-		g2d.setColor(new java.awt.Color(color.getRGB(),color.hasAlpha));
+		g2d.setColor(new java.awt.Color(color.getRed(),color.getGreen(),color.getBlue(),color.getAlpha()));
 	}
 	public static java.awt.geom.GeneralPath toAwtPath(PathIterator pi){
 		java.awt.geom.GeneralPath path = new java.awt.geom.GeneralPath();

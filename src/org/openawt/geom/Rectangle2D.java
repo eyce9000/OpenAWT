@@ -27,6 +27,9 @@ package org.openawt.geom;
 
 import java.io.Serializable;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
 import android.graphics.RectF;
 
 
@@ -77,12 +80,14 @@ public abstract class Rectangle2D extends RectangularShape {
      * coordinates.
      * @since 1.2
      */
+    @Root(name="rect")
     public static class Float extends Rectangle2D implements Serializable {
         /**
          * The X coordinate of this <code>Rectangle2D</code>.
          * @since 1.2
          * @serial
          */
+    	@Attribute
         public float x;
 
         /**
@@ -90,6 +95,7 @@ public abstract class Rectangle2D extends RectangularShape {
          * @since 1.2
          * @serial
          */
+    	@Attribute
         public float y;
 
         /**
@@ -97,6 +103,7 @@ public abstract class Rectangle2D extends RectangularShape {
          * @since 1.2
          * @serial
          */
+    	@Attribute
         public float width;
 
         /**
@@ -104,6 +111,7 @@ public abstract class Rectangle2D extends RectangularShape {
          * @since 1.2
          * @serial
          */
+    	@Attribute
         public float height;
 
         /**
