@@ -27,6 +27,7 @@ package org.openawt.geom;
 
 import java.io.Serializable;
 
+import org.openawt.Style;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -528,6 +529,11 @@ public abstract class Rectangle2D extends RectangularShape {
     }
 
     /**
+     * The style for drawing this shape
+     */
+	private Style style;
+
+    /**
      * This is an abstract class that cannot be instantiated directly.
      * Type-specific implementation subclasses are available for
      * instantiation and provide a number of formats for storing
@@ -959,4 +965,14 @@ public abstract class Rectangle2D extends RectangularShape {
         return false;
     }
     
+    @Override
+    @Attribute
+    public Style getStyle(){
+    	return this.style;
+    }
+    @Override
+    @Attribute
+    public void setStyle(Style style){
+    	this.style = style;
+    }
 }

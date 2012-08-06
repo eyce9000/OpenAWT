@@ -29,6 +29,7 @@ import org.openawt.geom.AffineTransform;
 import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
+import org.simpleframework.xml.Attribute;
 
 /**
  * The <code>Shape</code> interface provides definitions for objects
@@ -355,5 +356,15 @@ public interface Shape {
      * @since 1.2
      */
     public PathIterator getPathIterator(AffineTransform at, double flatness);
+    
+    /**
+     * 
+     * @return
+     */
+    @Attribute
+    public Style getStyle();
+    
+    @Attribute
+    public void setStyle(Style style);
    
 }

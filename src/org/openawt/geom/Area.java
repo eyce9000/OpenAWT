@@ -31,9 +31,11 @@ import java.util.NoSuchElementException;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.Style;
 import org.openawt.geom.impl.AreaOp;
 import org.openawt.geom.impl.Crossings;
 import org.openawt.geom.impl.Curve;
+import org.simpleframework.xml.Attribute;
 
 
 /**
@@ -424,6 +426,13 @@ public class Area implements Shape, Cloneable {
     }
 
     private Rectangle2D cachedBounds;
+
+    /**
+     * This is the visual style of this shape
+     */
+	private Style style;
+    
+    
     private void invalidateBounds() {
         cachedBounds = null;
     }
@@ -656,6 +665,18 @@ public class Area implements Shape, Cloneable {
     public PathIterator getPathIterator(AffineTransform at, double flatness) {
         return new FlatteningPathIterator(getPathIterator(at), flatness);
     }
+
+	@Override
+	@Attribute
+	public Style getStyle() {
+		return this.style;
+	}
+
+	@Override
+	@Attribute
+	public void setStyle(Style style) {
+		this.style = style;
+	}
 }
 
 class AreaIterator implements PathIterator {

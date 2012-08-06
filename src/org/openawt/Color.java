@@ -16,7 +16,7 @@ public class Color{
 	private String value;
 	
 	/**
-	 * Creates a new color with alpha value 255 (opaque)
+	 * Creates a new color with alpha value of 255 (opaque)
 	 * @param red an 8 bit value (0-255)
 	 * @param green an 8 bit value (0-255)
 	 * @param blue an 8 bit value (0-255)
@@ -71,16 +71,25 @@ public class Color{
 		return alpha == 255;
 	}
 	/**
-	 * Returns the color as a hexadecimal encoded integer with this format:<br/>
-	 * 0x<b>&lt;red&gt;</b><b>&lt;green&gt;</b><b>&lt;blue&gt;</b><br/>
-	 * e.g. <br/>
+	 * <p>
+	 * Returns the color as a hexadecimal encoded integer.
+	 * </p>
+	 * <p>
+	 * The encoded integer will be in this format:
+	 * 
+	 * <blockquote><tt>
+	 * 0xrrggbb</tt>
+	 * </blockquote>
+	 * </p>
+	 * <p>Some examples:
 	 * <ul>
-	 * <li>white : 0xffffff</li>
-	 * <li>red : 0xff0000</li>
-	 * <li>blue : 0x0000ff</li>
-	 * <li>green : 0x00ff00</li>
-	 * <li>maroon : 0x6C1420</li>
+	 * <li>white : <code>0xffffff</code></li>
+	 * <li>red : <code>0xff0000</code></li>
+	 * <li>blue : <code>0x0000ff</code></li>
+	 * <li>green : <code>0x00ff00</code></li>
+	 * <li>maroon : <code>0x6C1420</code></li>
 	 * </ul>
+	 * </p>
 	 * @return the hexadecimal encoded integer
 	 */
 	public int getRGB(){
@@ -88,16 +97,25 @@ public class Color{
 	}
 
 	/**
-	 * Returns the color as a hexadecimal encoded integer with this format:<br/>
-	 * 0x<b>&lt;alpha&gt;</b><b>&lt;red&gt;</b><b>&lt;green&gt;</b><b>&lt;blue&gt;</b><br/>
-	 * e.g. <br/>
+	 * <p>Returns the color as a hexadecimal encoded integer including alpha.
+	 * </p
+	 * <p>
+	 * The encoded integer will be in this format:
+	 * 
+	 * <blockquote><tt>
+	 * 0xaarrggbb
+	 * </tt></blockquote>
+	 * </p>
+	 * <p>
+	 * Some examples:
 	 * <ul>
-	 * <li>half opaque white : 0x80ffffff</li>
-	 * <li>half opaque red : 0x80ff0000</li>
-	 * <li>quarter opaque blue : 0x400000ff</li>
-	 * <li>quarter opaque green : 0x4000ff00</li>
-	 * <li>quarter opaque maroon : 0x406C1420</li>
+	 * <li>half opaque white : <code>0x80ffffff</code></li>
+	 * <li>half opaque red : <code>0x80ff0000</code></li>
+	 * <li>quarter opaque blue : <code>0x400000ff</code></li>
+	 * <li>quarter opaque green : <code>0x4000ff00</code></li>
+	 * <li>quarter opaque maroon : <code>0x406C1420</code></li>
 	 * </ul>
+	 * </p>
 	 * @return the hexadecimal encoded integer
 	 */
 	public int getRGBA(){
@@ -105,8 +123,8 @@ public class Color{
 	}
 	
 	/**
-	 * Returns a string representation of this color. 
-	 * If the color is opaque the RGB representation is used, otherwise the RGBA representation is used.
+	 * <p>Returns a string representation of this color. 
+	 * If the color is opaque the RGB representation is used, otherwise the RGBA representation is used.</p>
 	 * @return the RGB or RGBA encoded string
 	 * @see Color#toRGBString()
 	 * @see Color#toRGBAString()
@@ -120,65 +138,89 @@ public class Color{
 			
 	}
 	/**
-	 * Returns a string representation of this color formatted as a standard RGB hexadecimal string.<br/>
-	 * e.g.<br/>
+	 * <p>Returns a string representation of this color formatted as a standard RGB hexadecimal string.</p>
+	 * <p>Examples:
 	 * <ul>
-	 * <li>white : <b>#ffffff</b></li>
-	 * <li>red : <b>#ff0000</b></li>
-	 * <li>blue : <b>#0000ff</b></li>
-	 * <li>green : <b>#00ff00</b></li>
-	 * <li>maroon : <b>#6C1420</b></li>
+	 * <li>white : <code>#ffffff</code></li>
+	 * <li>red : <code>#ff0000</code></li>
+	 * <li>blue : <code>#0000ff</code></li>
+	 * <li>green : <code>#00ff00</code></li>
+	 * <li>maroon : <code>#6C1420</code></li>
 	 * </ul>
+	 * <p/>
 	 * @return the formatted string representation
 	 */
 	public String toRGBHexString(){
 		return String.format("#%02x%02x%02x",getRed(),getGreen(),getBlue());
 	}
 	/**
-	 * Returns a string representation of this color formatted as an ARGB hexadecimal string.<br/>
-	 * e.g.<br/>
+	 * <p>Returns a string representation of this color formatted as an ARGB hexadecimal string.</p>
+	 * <p>Examples:
 	 * <ul>
-	 * <li>white : <b>#ffffff</b></li>
-	 * <li>red : <b>#ff0000</b></li>
-	 * <li>blue : <b>#0000ff</b></li>
-	 * <li>green : <b>#00ff00</b></li>
-	 * <li>maroon : <b>#6C1420</b></li>
+	 * <li>white : <code>#ffffff</code></li>
+	 * <li>red : <code>#ff0000</code></li>
+	 * <li>blue : <code>#0000ff</code></li>
+	 * <li>green : <code>#00ff00</code></li>
+	 * <li>maroon : <code>#6C1420</code></li>
 	 * </ul>
+	 * </p>
 	 * @return the formatted string representation
 	 */
 	public String toARGBHexString(){
 		return String.format("#%02x%02x%02x%02x",getAlpha(),getRed(),getGreen(),getBlue());
 	}
 	/**
-	 * Returns a string representation of the color in rgb format.<br/>
-	 * e.g.<br/>
+	 * <p>Returns a string representation of the color in rgb format.</p>
+	 * <p>Examples
 	 * <ul>
-	 * <li>white : <b>rgb(255,255,255)</b></li>
-	 * <li>red : <b>rgb(255,0,0)</b></li>
-	 * <li>blue : <b>rgb(0,0,255)</b></li>
-	 * <li>green : <b>rgb(0,255,0)</b></li>
-	 * <li>maroon : <b>rgb(108,20,32)</b></li>
+	 * <li>white : <code>rgb(255,255,255)</code></li>
+	 * <li>red : <code>rgb(255,0,0)</code></li>
+	 * <li>blue : <code>rgb(0,0,255)</code></li>
+	 * <li>green : <code>rgb(0,255,0)</code></li>
+	 * <li>maroon : <code>rgb(108,20,32)</code></li>
 	 * </ul>
+	 * </p>
 	 * @return the formatted string representation
 	 */
 	public String toRGBString(){
 		return "rgb("+red+","+green+","+blue+")";
 	}
 	/**
-	 * Returns a string representation of the color in rgba format.<br/>
-	 * e.g.<br/>
+	 * <p>Returns a string representation of the color in rgba format.</p>
+	 * <p>Examples
 	 * <ul>
-	 * <li>half opaque white : <b>rgba(255,255,255,128)</b></li>
-	 * <li>half opaque red : <b>rgba(255,0,0,128)</b></li>
-	 * <li>quarter opaque blue : <b>rgba(0,0,255,64)</b></li>
-	 * <li>quarter opaque green : <b>rgba(0,255,0,64)</b></li>
-	 * <li>quarter opaque maroon : <b>rgba(108,20,32,64)</b></li>
+	 * <li>half opaque white : <code>rgba(255,255,255,128)</code></li>
+	 * <li>half opaque red : <code>rgba(255,0,0,128)</code></li>
+	 * <li>quarter opaque blue : <code>rgba(0,0,255,64)</code></li>
+	 * <li>quarter opaque green : <code>rgba(0,255,0,64)</code></li>
+	 * <li>quarter opaque maroon : <code>rgba(108,20,32,64)</code></li>
 	 * </ul>
+	 * <p/>
 	 * @return the formatted string representation
 	 */
 	public String toRGBAString(){
 		return "rgba("+red+","+green+","+blue+","+alpha+")";
 	}
+	
+	/**
+	 * <p>Parses a string representation of a color and returns the resulting <code>Color</code>.</p>
+	 * <p>
+	 * Strings can be in one of the following formats:
+	 * </p>
+	 * <ul>
+	 * <li><p><b>Short Hexadecimal</b><br/><code>Color.parse("#cf0")</code></p></li>
+	 * <li><p><b>Full Hexadecimal</b><br/><code>Color.parse("#6C1420")</code></p></li>
+	 * <p>Note that when parsed, the short hexadecimal is expanded such that
+	 * the following two hexadecimal statements are treated equivalently:<br/>
+	 * <code>Color.parse("#cf0")</code><br/>
+	 * <code>Color.parse("#ccff00")</code>
+	 * </p>
+	 * <li><p><b>Integer RGB</b><br /><code>Color.parse("rgb(108,20,32)")</code></p></li>
+	 * <li><p><b>Integer RGBA</b><br /><code>Color.parse("rgba(108,20,32,64)")</code></p></li>
+	 * </ul>
+	 * @param value a formatted string representation of a color
+	 * @return the parsed color
+	 */
 	public static Color parse(String value){
 		int red,green,blue,alpha;
 		value = value.replaceAll("\\s", "");
@@ -248,10 +290,11 @@ public class Color{
 	
 	
 	
-	public static final Color RED = fromARGB(0xffff0000);
-	public static final Color WHITE = fromARGB(0xffffffff);
-	public static final Color BLACK = fromARGB(0xff000000);
-	public static final Color BLUE = fromARGB(0xff0000ff);
-	public static final Color GRAY = fromARGB(0xffcccccc);
+	public static final Color RED = fromRGB(0xff0000);
+	public static final Color WHITE = fromRGB(0xffffff);
+	public static final Color BLACK = fromRGB(0x000000);
+	public static final Color BLUE = fromRGB(0x0000ff);
+	public static final Color GREEN = fromRGB(0x00ff00);
+	public static final Color GRAY = fromRGB(0xcccccc);
 
 }

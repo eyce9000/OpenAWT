@@ -33,6 +33,7 @@ import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
 import org.openawt.geom.impl.Crossings;
+import org.simpleframework.xml.Attribute;
 
 /**
  * The <code>Polygon</code> class encapsulates a description of a
@@ -111,6 +112,11 @@ public class Polygon implements Shape, java.io.Serializable {
      * @since 1.0
      */
     protected Rectangle bounds;
+
+    /**
+     * The {@code Style} of this {@code Shape}
+     */
+	private Style style;
 
     /*
      * JDK 1.1 serialVersionUID
@@ -683,5 +689,15 @@ public class Polygon implements Shape, java.io.Serializable {
             return (index == 0 ? SEG_MOVETO : SEG_LINETO);
         }
     }
+
+	@Override
+	public Style getStyle() {
+		return this.style;
+	}
+
+	@Override
+	public void setStyle(Style style) {
+		this.style = style;
+	}
 
 }

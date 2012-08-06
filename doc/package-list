@@ -1,0 +1,5 @@
+org.openawt
+org.openawt.draw.android
+org.openawt.draw.awt
+org.openawt.geom
+org.openawt.geom.impl

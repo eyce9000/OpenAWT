@@ -32,6 +32,7 @@ import java.util.Arrays;
 import org.openawt.ArrayHelper;
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.Style;
 import org.openawt.geom.impl.Curve;
 
 
@@ -102,6 +103,11 @@ public abstract class Path2D implements Shape, Cloneable {
     transient int numTypes;
     transient int numCoords;
     transient int windingRule;
+
+    /**
+     * The visual style of this shape
+     */
+	private Style style;
 
     static final int INIT_SIZE = 20;
     static final int EXPAND_MAX = 500;
@@ -2366,6 +2372,15 @@ public abstract class Path2D implements Shape, Cloneable {
         return new FlatteningPathIterator(getPathIterator(at), flatness);
     }
 
+    
+    public Style getStyle(){
+    	return this.style;
+    }
+    
+    public void setStyle(Style style){
+    	this.style = style;
+    }
+    
     /**
      * Creates a new object of the same class as this object.
      *

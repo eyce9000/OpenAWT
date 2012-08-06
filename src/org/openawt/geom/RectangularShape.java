@@ -27,6 +27,8 @@ package org.openawt.geom;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
+import org.openawt.Style;
+import org.simpleframework.xml.Attribute;
 
 /**
  * <code>RectangularShape</code> is the base class for a number of
@@ -42,8 +44,12 @@ import org.openawt.Shape;
  * @since 1.2
  */
 public abstract class RectangularShape implements Shape, Cloneable {
+	/**
+	 * The visual style of this shape
+	 */
+    private Style style;
 
-    /**
+	/**
      * This is an abstract class that cannot be instantiated directly.
      *
      * @see Arc2D
@@ -391,5 +397,13 @@ public abstract class RectangularShape implements Shape, Cloneable {
             // this shouldn't happen, since we are Cloneable
             throw new InternalError();
         }
+    }
+    
+    public Style getStyle(){
+    	return this.style;
+    }
+    
+    public void setStyle(Style style){
+    	this.style = style;
     }
 }
