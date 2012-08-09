@@ -1,8 +1,9 @@
-package org.openawt;
+package org.openawt.svg;
 
-import org.openawt.annotations.CSSProperty;
+import org.openawt.Color;
+import org.openawt.svg.annotations.CSSProperty;
 
-public class Style {
+public class Style implements Cloneable{
 	@CSSProperty(name="stroke")
 	private Color stroke = null;
 	@CSSProperty
@@ -11,6 +12,11 @@ public class Style {
 	private Color fill = null;
 	public Style(){
 		
+	}
+	public Style(Style style){
+		this.stroke = style.stroke;
+		this.strokeWidth = style.strokeWidth;
+		this.fill = style.fill;
 	}
 	/**
 	 * @return the stroke
@@ -52,4 +58,7 @@ public class Style {
 		return this;
 	}
 	
+	public Object clone(){
+		return new Style(this);
+	}
 }

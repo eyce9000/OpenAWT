@@ -30,8 +30,8 @@ import java.io.Serializable;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
-import org.openawt.Style;
 import org.openawt.geom.impl.Curve;
+import org.openawt.svg.Style;
 import org.simpleframework.xml.Attribute;
 
 
@@ -1701,17 +1701,5 @@ public abstract class CubicCurve2D implements Shape, Cloneable {
             // this shouldn't happen, since we are Cloneable
             throw new InternalError();
         }
-    }
-    
-    @Override
-    @Attribute
-    public Style getStyle(){
-    	return this.style;
-    }
-    
-    @Override
-    @Attribute
-    public void setStyle(Style style){
-    	this.style = style;
     }
 }

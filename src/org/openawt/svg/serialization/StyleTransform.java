@@ -1,20 +1,21 @@
-package org.openawt.serialization;
+package org.openawt.svg.serialization;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import org.openawt.Color;
-import org.openawt.Style;
-import org.openawt.annotations.CSSProperty;
+import org.openawt.svg.NumberUnit;
+import org.openawt.svg.Style;
+import org.openawt.svg.annotations.CSSProperty;
 import org.simpleframework.xml.stream.HyphenStyle;
 import org.simpleframework.xml.transform.Transform;
 
 public class StyleTransform implements Transform<Style>{
-	private HashMap<String,Field> nameToField = new HashMap<String,Field>();
-	private HashMap<Field,String> fieldToName = new HashMap<Field,String>();
-	private HyphenStyle hyphenate = new HyphenStyle();
-	public StyleTransform(){
+	private static HashMap<String,Field> nameToField = new HashMap<String,Field>();
+	private static HashMap<Field,String> fieldToName = new HashMap<Field,String>();
+	private static HyphenStyle hyphenate = new HyphenStyle();
+	static {
 		Field[] fields = Style.class.getDeclaredFields();
 		for(int i=0;i<fields.length; i++){
 			Field field = fields[i];
@@ -77,10 +78,21 @@ public class StyleTransform implements Transform<Style>{
 			boolean wasPrivate = field.isAccessible();
 			field.setAccessible(true);
 			{
+				String out = null;
 				Object value = field.get(theStyle);
 				if(value!=null){
-
-					values.put(fieldToName.get(field),value.toString());
+					if(value instanceof Color){
+						if(((Color) value).getAlpha() == 0){
+							out = "none";
+						}
+						else{
+							out = value.toString();
+						}
+					}
+					else{
+						out = value.toString();
+					}
+					values.put(fieldToName.get(field),out);
 				}
 			}
 			field.setAccessible(wasPrivate);

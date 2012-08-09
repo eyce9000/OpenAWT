@@ -31,10 +31,10 @@ import java.util.NoSuchElementException;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
-import org.openawt.Style;
 import org.openawt.geom.impl.AreaOp;
 import org.openawt.geom.impl.Crossings;
 import org.openawt.geom.impl.Curve;
+import org.openawt.svg.Style;
 import org.simpleframework.xml.Attribute;
 
 
@@ -666,17 +666,6 @@ public class Area implements Shape, Cloneable {
         return new FlatteningPathIterator(getPathIterator(at), flatness);
     }
 
-	@Override
-	@Attribute
-	public Style getStyle() {
-		return this.style;
-	}
-
-	@Override
-	@Attribute
-	public void setStyle(Style style) {
-		this.style = style;
-	}
 }
 
 class AreaIterator implements PathIterator {

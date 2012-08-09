@@ -1,4 +1,4 @@
-package org.openawt.annotations;
+package org.openawt.svg.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

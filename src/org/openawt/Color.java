@@ -118,7 +118,7 @@ public class Color{
 	 * </p>
 	 * @return the hexadecimal encoded integer
 	 */
-	public int getRGBA(){
+	public int getARGB(){
 		return alpha<<24 & red<<16 & green<<8 & blue;
 	}
 	
@@ -260,6 +260,9 @@ public class Color{
 			alpha = Integer.parseInt(parts[3]);
 			return new Color(red,green,blue,alpha);
 		}
+		else if(value.equals("none")){
+			return new Color(0,0,0,0);
+		}
 		else{
 			throw new IllegalArgumentException("Value '"+value+"' is not a recognized color.");
 		}
@@ -296,5 +299,6 @@ public class Color{
 	public static final Color BLUE = fromRGB(0x0000ff);
 	public static final Color GREEN = fromRGB(0x00ff00);
 	public static final Color GRAY = fromRGB(0xcccccc);
+	public static final Color NONE = new Color(0,0,0,0);
 
 }

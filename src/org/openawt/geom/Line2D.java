@@ -29,8 +29,6 @@ import java.io.Serializable;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
-import org.openawt.Style;
-
 
 /**
  * This <code>Line2D</code> represents a line segment in {@code (x,y)}
@@ -370,10 +368,6 @@ public abstract class Line2D implements Shape, Cloneable {
         private static final long serialVersionUID = 7979627399746467499L;
     }
 
-    /**
-     * The visual style of this shape
-     */
-	private Style style;
 
     /**
      * This is an abstract class that cannot be instantiated directly.
@@ -1132,13 +1126,5 @@ public abstract class Line2D implements Shape, Cloneable {
             // this shouldn't happen, since we are Cloneable
             throw new InternalError();
         }
-    }
-    
-    public Style getStyle(){
-    	return this.style;
-    }
-    
-    public void setStyle(Style style){
-    	this.style = style;
     }
 }

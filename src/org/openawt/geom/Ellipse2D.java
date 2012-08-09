@@ -27,8 +27,6 @@ package org.openawt.geom;
 
 import java.io.Serializable;
 
-import org.simpleframework.xml.Attribute;
-
 /**
  * The <code>Ellipse2D</code> class describes an ellipse that is defined
  * by a framing rectangle.
@@ -467,41 +465,7 @@ public abstract class Ellipse2D extends RectangularShape {
         return false;
     }
     
-    /**
-     * Returns the horizontal radius of the <code>Ellipse</code> in <code>double</code> precision.
-     * @return the horizontal radius of the <code>Ellipse</code> in <code>double</code> precision.
-     */
-    @Attribute(name="rx")
-    public double getRadiusX(){
-    	return getWidth()/2;
-    }
-    /**
-     * Returns the vertical radius of the <code>Ellipse</code> in <code>double</code> precision.
-     * @return the vertical radius of the <code>Ellipse</code> in <code>double</code> precision.
-     */
-    @Attribute(name="ry")
-    public double getRadiusY(){
-    	return getHeight()/2;
-    }
+   
     
-    @Attribute(name="cx")
-    @Override
-    public double getCenterX(){
-    	return super.getCenterX();
-    }
-    
-    @Attribute(name="cy")
-    @Override
-    public double getCenterY(){
-    	return super.getCenterY();
-    }
-    
-    
-    public void setFrameFromCenterRadius(
-    		@Attribute double cx, 
-    		@Attribute double cy, 
-    		@Attribute double rx, 
-    		@Attribute double ry){
-    	super.setFrameFromCenter(cx, cy, rx+cx, rx+cy);
-    }
+
 }

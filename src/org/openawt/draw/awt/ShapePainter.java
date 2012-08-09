@@ -1,13 +1,39 @@
 package org.openawt.draw.awt;
 
+import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 
 import org.openawt.Color;
 import org.openawt.Shape;
 import org.openawt.geom.PathIterator;
+import org.openawt.svg.SVGShape;
+import org.openawt.svg.Style;
 
 
 public class ShapePainter {
+	public static void draw(Graphics2D g2d, SVGShape shape){
+		Style style = shape.getStyle();
+		if(style!=null){
+			org.openawt.Color fillColor = style.getStroke();
+			if(fillColor!=null){
+				g2d.setColor(new java.awt.Color(fillColor.getARGB(),!fillColor.isOpaque()));
+				fill(g2d,shape.getShape());
+			}
+
+			org.openawt.Color strokeColor = style.getStroke();
+			Float strokeWidth = style.getStrokeWidth();
+			if(strokeColor!=null)
+				g2d.setColor(new java.awt.Color(strokeColor.getARGB(),!fillColor.isOpaque()));
+			if(strokeWidth != null)
+				g2d.setStroke(new BasicStroke(strokeWidth));
+
+			if(strokeColor!=null || strokeWidth!=null){
+				draw(g2d, shape.getShape());
+			}
+		}
+		else
+			draw(g2d,shape.getShape());
+	}
 	public static void draw(Graphics2D g2d, Shape s){
 		if(s!=null){
 			PathIterator pi = s.getPathIterator(null);

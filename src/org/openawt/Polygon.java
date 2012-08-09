@@ -33,6 +33,7 @@ import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
 import org.openawt.geom.impl.Crossings;
+import org.openawt.svg.Style;
 import org.simpleframework.xml.Attribute;
 
 /**
@@ -689,15 +690,4 @@ public class Polygon implements Shape, java.io.Serializable {
             return (index == 0 ? SEG_MOVETO : SEG_LINETO);
         }
     }
-
-	@Override
-	public Style getStyle() {
-		return this.style;
-	}
-
-	@Override
-	public void setStyle(Style style) {
-		this.style = style;
-	}
-
 }

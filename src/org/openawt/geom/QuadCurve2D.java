@@ -29,8 +29,8 @@ import java.io.Serializable;
 
 import org.openawt.Rectangle;
 import org.openawt.Shape;
-import org.openawt.Style;
 import org.openawt.geom.impl.Curve;
+import org.openawt.svg.Style;
 import org.simpleframework.xml.Attribute;
 
 

@@ -1,4 +1,4 @@
-package org.openawt.serialization;
+package org.openawt.svg.serialization;
 
 import java.util.HashMap;
 import java.util.Map;

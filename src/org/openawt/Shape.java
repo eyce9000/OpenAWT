@@ -357,14 +357,5 @@ public interface Shape {
      */
     public PathIterator getPathIterator(AffineTransform at, double flatness);
     
-    /**
-     * 
-     * @return
-     */
-    @Attribute
-    public Style getStyle();
-    
-    @Attribute
-    public void setStyle(Style style);
    
 }

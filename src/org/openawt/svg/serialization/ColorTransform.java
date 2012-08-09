@@ -1,4 +1,4 @@
-package org.openawt.serialization;
+package org.openawt.svg.serialization;
 
 import org.openawt.Color;
 import org.simpleframework.xml.transform.Transform;
