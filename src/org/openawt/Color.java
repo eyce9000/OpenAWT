@@ -1,6 +1,5 @@
 package org.openawt;
 
-import java.util.Formattable;
 import java.util.Formatter;
 
 /**
@@ -13,7 +12,10 @@ public class Color{
 	private int green = 0;
 	private int blue = 0;
 	private int alpha = 255;
-	private String value;
+	
+	private Color(){
+		
+	}
 	
 	/**
 	 * Creates a new color with alpha value of 255 (opaque)
@@ -37,7 +39,6 @@ public class Color{
 		this.green = Math.max(Math.min(green, 255),0);
 		this.blue = Math.max(Math.min(blue, 255),0);
 		this.alpha = Math.max(Math.min(alpha, 255),0);
-		this.value = this.toString();
 	}
 	/**
 	 * @return the 8-bit red component of this color
@@ -65,10 +66,18 @@ public class Color{
 	}
 	/**
 	 * Indicates whether the color is opaque (alpha == 255)
-	 * @return if the alpha value is 255 true, otherwise false
+	 * @return if the alpha value is 255 returns true, otherwise false
 	 */
 	public boolean isOpaque(){
 		return alpha == 255;
+	}
+	
+	/**
+	 * Indicates whether the color is clear (alpha == 0)
+	 * @return if the alpha value is 0 returns true, otherwise false
+	 */
+	public boolean isClear(){
+		return alpha == 0;
 	}
 	/**
 	 * <p>
@@ -282,9 +291,6 @@ public class Color{
 			(int)((hex & 0x0000ff00l)>>8),
 			(int)((hex & 0x000000ffl)>>0)
 			);
-	}
-	public static Color fromAndroidColor(android.graphics.Color color){
-		return fromARGB(color.hashCode());
 	}
 	
 	public boolean equals(Color color){

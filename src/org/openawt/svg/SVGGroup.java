@@ -7,6 +7,7 @@ import java.util.List;
 import org.openawt.Rectangle;
 import org.openawt.Shape;
 import org.openawt.geom.AffineTransform;
+import org.openawt.geom.GeneralPath;
 import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
@@ -34,8 +35,11 @@ public class SVGGroup extends SVGShapeCollection implements SVGShape<Shape>{
 
 	@Override
 	public Shape getShape() {
-		// TODO Auto-generated method stub
-		return null;
+		GeneralPath path = new GeneralPath();
+		for(SVGShape shape:this){
+			path.append(shape.getShape(), false);
+		}
+		return path;
 	}
 	
 }

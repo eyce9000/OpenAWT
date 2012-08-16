@@ -3,10 +3,12 @@ package org.openawt.draw.android;
 import org.openawt.BasicStroke;
 import org.openawt.Shape;
 import org.openawt.geom.*;
+import org.openawt.svg.SVGGroup;
 import org.openawt.svg.SVGShape;
 import org.openawt.svg.Style;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
@@ -14,28 +16,45 @@ import android.graphics.Path;
 import android.graphics.Path.FillType;
 
 public class ShapePainter {
-	public static void draw(Canvas c, SVGShape s, Paint paint){
-		Style style = s.getStyle();
-		if(style!=null){
-			org.openawt.Color fillColor = style.getStroke();
-			if(fillColor!=null){
-				paint.setColor(fillColor.getARGB());
-				fill(c,s.getShape(),paint);
-			}
-
-			org.openawt.Color strokeColor = style.getStroke();
-			Float strokeWidth = style.getStrokeWidth();
-			if(strokeColor!=null)
-				paint.setColor(strokeColor.getARGB());
-			if(strokeWidth != null)
-				paint.setStrokeWidth(strokeWidth);
-
-			if(strokeColor!=null || strokeWidth!=null){
-				draw(c, s.getShape(), paint);
-			}
+	public static void drawGroup(Canvas c, SVGGroup group,Paint paint){
+		for(SVGShape shape:group){
+			draw(c,shape,paint);
 		}
-		else
-			draw(c,s.getShape(),paint);
+	}
+	public static void draw(Canvas c, SVGShape s, Paint paint){
+		if(s==null)
+			return;
+		if(s instanceof SVGGroup){
+			drawGroup(c,(SVGGroup)s,paint);
+		}
+		else{
+			Style style = s.getStyle();
+			if(style!=null){
+				org.openawt.Color fillColor = style.getStroke();
+				if(fillColor!=null){
+					paint.setColor(fillColor.getARGB());
+					fill(c,s.getShape(),paint);
+				}
+
+				org.openawt.Color strokeColor = style.getStroke();
+				Float strokeWidth = style.getStrokeWidth();
+				
+				if(strokeColor!=null)
+					paint.setColor(strokeColor.getARGB());
+				else
+					paint.setColor(org.openawt.Color.BLACK.getARGB());
+				if(strokeWidth != null)
+					paint.setStrokeWidth(strokeWidth);
+				else
+					paint.setStrokeWidth(1f);
+
+				if(strokeColor!=null || strokeWidth!=null){
+					draw(c, s.getShape(), paint);
+				}
+			}
+			else
+				draw(c,s.getShape(),paint);
+		}
 	}
 	public static void draw(Canvas c, Shape s, BasicStroke strokeStyle, Paint paint){
 		if(strokeStyle!=null)
