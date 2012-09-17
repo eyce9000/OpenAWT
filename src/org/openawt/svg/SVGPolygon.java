@@ -5,6 +5,7 @@ import java.util.List;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Polygon2D;
 import org.openawt.geom.Polyline2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -12,6 +13,7 @@ import org.simpleframework.xml.Root;
 public class SVGPolygon implements SVGShape<Polygon2D>{
 	private Polygon2D polygon;
 	private Style style;
+	private Transform transform;
 	
 	public SVGPolygon(@Attribute(name="points")Polyline2D polyline){
 		polygon = new Polygon2D(polyline.xpoints,polyline.ypoints,polyline.npoints);
@@ -54,4 +56,15 @@ public class SVGPolygon implements SVGShape<Polygon2D>{
 		return polygon;
 	}
 
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
+	}
 }

@@ -1,15 +1,24 @@
 package org.openawt.svg;
 
+import java.io.Serializable;
+
 import org.openawt.Color;
 import org.openawt.svg.annotations.CSSProperty;
+import org.simpleframework.xml.Attribute;
 
-public class Style implements Cloneable{
+public class Style implements Cloneable,Serializable{
 	@CSSProperty(name="stroke")
 	private Color stroke = null;
 	@CSSProperty
 	private Float strokeWidth = null;
 	@CSSProperty
 	private Color fill = null;
+	@CSSProperty(name="font-size")
+	private Float fontSize;
+	@CSSProperty(name="font-family")
+	private String fontFamily;
+	
+	
 	public Style(){
 		
 	}
@@ -55,6 +64,33 @@ public class Style implements Cloneable{
 	 */
 	public Style setFill(Color fill) {
 		this.fill = fill;
+		return this;
+	}
+	
+	/**
+	 * @return the fontSize
+	 */
+	public Float getFontSize() {
+		return fontSize;
+	}
+	/**
+	 * @param fontSize the fontSize to set
+	 */
+	public Style setFontSize(Float fontSize) {
+		this.fontSize = fontSize;
+		return this;
+	}
+	/**
+	 * @return the fontFamily
+	 */
+	public String getFontFamily() {
+		return fontFamily;
+	}
+	/**
+	 * @param fontFamily the fontFamily to set
+	 */
+	public Style setFontFamily(String fontFamily) {
+		this.fontFamily = fontFamily;
 		return this;
 	}
 	

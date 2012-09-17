@@ -5,11 +5,13 @@ import org.openawt.geom.GeneralPath;
 import org.openawt.geom.Path2D;
 import org.openawt.geom.PathIterator;
 import org.openawt.svg.serialization.PathIteratorTransform;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 
 public class SVGPath implements SVGShape<Path2D>{
 	private Path2D path;
 	private Style style;
+	private Transform transform;
 	public SVGPath(){
 		path = new GeneralPath();
 	}
@@ -51,13 +53,13 @@ public class SVGPath implements SVGShape<Path2D>{
 	
 	
 	@Override
-	@Attribute(required = false)
+	@Attribute(required=false)
 	public Style getStyle() {
 		return this.style;
 	}
 
 	@Override
-	@Attribute(required = false)
+	@Attribute(required=false)
 	public void setStyle(Style style) {
 		this.style = style;
 	}
@@ -66,4 +68,15 @@ public class SVGPath implements SVGShape<Path2D>{
 		return path;
 	}
 
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
+	}
 }

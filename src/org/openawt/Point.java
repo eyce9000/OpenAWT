@@ -27,7 +27,6 @@ package org.openawt;
 
 import org.openawt.geom.Point2D;
 
-import android.graphics.PointF;
 
 /**
  * A point representing a location in {@code (x,y)} coordinate space,
@@ -232,8 +231,5 @@ public class Point extends Point2D implements java.io.Serializable {
         return getClass().getName() + "[x=" + x + ",y=" + y + "]";
     }
 
-	public PointF toAndroidPoint() {
-		return new android.graphics.PointF(x,y);
-	}
 	
 }

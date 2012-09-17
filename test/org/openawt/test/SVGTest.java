@@ -20,6 +20,7 @@ import org.openawt.svg.SVGPolygon;
 import org.openawt.svg.SVGPolyline;
 import org.openawt.svg.SVGRectangle;
 import org.openawt.svg.Style;
+import org.openawt.svg.transforms.*;
 
 public class SVGTest {
 
@@ -31,6 +32,18 @@ public class SVGTest {
 	public void tearDown() throws Exception {
 	}
 
+	@Test
+	public void testTransforms(){
+		Transform trans = Transform.parse("rotate(20 15) ");
+		assertTrue((trans instanceof Rotate)==true);
+		trans = Transform.parse("scale(20 15) ");
+		assertTrue((trans instanceof Scale)==true);
+		trans = Transform.parse(" scale(20) ");
+		assertTrue((trans instanceof Scale)==true);
+		trans = Transform.parse("translate(20 15) ");
+		assertTrue((trans instanceof Translate)==true);
+		
+	}
 	@Test
 	public void test() throws Exception {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -50,7 +63,7 @@ public class SVGTest {
 		line1.setStyle(new Style().setStroke(Color.BLUE).setStrokeWidth(10f));
 		polyline1.setStyle(new Style().setStroke(Color.GREEN).setFill(new Color(0,0,0,0)));
 		path1.setStyle(new Style().setStrokeWidth(3f).setStroke(Color.BLACK).setFill(new Color(0,0,0,0)));
-		
+		path1.setTransform(new Scale(2f,3f));
 		SVGGroup group = new SVGGroup();
 		
 		group.addShape(path1);
@@ -59,7 +72,7 @@ public class SVGTest {
 		svg.serialize(new File("test.svg"));
 		System.out.println(out.toString());
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
-		SVGCanvas svg2 = SVGCanvas.deserailize(in);
+		SVGCanvas svg2 = SVGCanvas.deserialize(in);
 		assertTrue(svg2!=null);
 
 	}

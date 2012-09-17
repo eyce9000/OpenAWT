@@ -1,6 +1,7 @@
 package org.openawt.svg;
 
 import org.openawt.geom.Ellipse2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -9,6 +10,7 @@ import org.simpleframework.xml.Root;
 public class SVGCircle implements SVGShape<Ellipse2D>{
 	private Ellipse2D ellipse;
 	private Style style;
+	private Transform transform;
 	
 	public SVGCircle(
 			@Attribute(name="cx") double cx, 
@@ -41,13 +43,13 @@ public class SVGCircle implements SVGShape<Ellipse2D>{
 	}
 
 	@Override
-	@Attribute
+	@Attribute(required = false)
 	public Style getStyle() {
 		return style;
 	}
 
 	@Override
-	@Attribute
+	@Attribute(required = false)
 	public void setStyle(Style style) {
 		this.style = style;
 	}
@@ -55,6 +57,18 @@ public class SVGCircle implements SVGShape<Ellipse2D>{
 	@Override
 	public Ellipse2D getShape() {
 		return ellipse;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
 	}
 	
 }

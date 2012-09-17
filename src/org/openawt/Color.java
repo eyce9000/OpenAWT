@@ -1,5 +1,6 @@
 package org.openawt;
 
+import java.io.Serializable;
 import java.util.Formatter;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Formatter;
  * @author George Lucchese
  *
  */
-public class Color{	
+public class Color implements Serializable{	
 	private int red = 0;
 	private int green = 0;
 	private int blue = 0;

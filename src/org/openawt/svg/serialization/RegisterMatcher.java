@@ -20,5 +20,11 @@ public class RegisterMatcher implements Matcher {
 	public Transform match(Class type) throws Exception {
 		return transforms.get(type);
 	}
-
+	
+	public RegisterMatcher extend(RegisterMatcher matcher){
+		RegisterMatcher combined = new RegisterMatcher();
+		combined.transforms = new HashMap<Class,Transform>(matcher.transforms);
+		combined.transforms.putAll(transforms);
+		return combined;
+	}
 }

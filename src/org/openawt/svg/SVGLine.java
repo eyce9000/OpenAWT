@@ -1,6 +1,7 @@
 package org.openawt.svg;
 
 import org.openawt.geom.Line2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -9,6 +10,7 @@ import org.simpleframework.xml.Root;
 public class SVGLine implements SVGShape<Line2D>{
 	private Line2D line;
 	private Style style;
+	private Transform transform;
 	
 	public SVGLine(
 			@Attribute(name="x1") double x1,
@@ -44,13 +46,11 @@ public class SVGLine implements SVGShape<Line2D>{
 	}
 	
 	@Override
-	@Attribute
 	public Style getStyle() {
 		return this.style;
 	}
 
 	@Override
-	@Attribute
 	public void setStyle(Style style) {
 		this.style = style;
 	}
@@ -59,5 +59,16 @@ public class SVGLine implements SVGShape<Line2D>{
 	public Line2D getShape() {
 		return line;
 	}
-	
+
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
+	}
 }

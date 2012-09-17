@@ -8,7 +8,6 @@ import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.simpleframework.xml.transform.Transform;
 
-import android.graphics.Path;
 
 public class PathIteratorTransform implements Transform<Path2D>{
 

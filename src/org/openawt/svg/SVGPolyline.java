@@ -6,12 +6,14 @@ import org.openawt.geom.Line2D;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Polygon2D;
 import org.openawt.geom.Polyline2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 
 public class SVGPolyline implements SVGShape<Polyline2D>{
 	
 	private Style style;
 	private Polyline2D poly;
+	private Transform transform;
 	
 	public SVGPolyline(float[] xpoints, float[] ypoints, int npoints){
 		poly = new Polyline2D(xpoints,ypoints,npoints);
@@ -46,5 +48,17 @@ public class SVGPolyline implements SVGShape<Polyline2D>{
 	@Attribute(name="points")
 	public Polyline2D getShape() {
 		return poly;
+	}
+	
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
 	}
 }

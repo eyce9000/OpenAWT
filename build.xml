@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="build" name="openawt">
     <property environment="env"/>
+	<property name="major-version-number" value="0.1" />
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
     <path id="openawt.classpath">
         <pathelement location="bin"/>
-        <pathelement location="lib/android.jar"/>
+        <fileset dir="lib" />
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -19,6 +20,9 @@
     </target>
     <target name="clean">
         <delete dir="bin"/>
+    	<delete>
+    	    <fileset dir="build" includes="*.jar"/>
+    	</delete>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
@@ -31,9 +35,13 @@
         </javac>
 
 		<mkdir dir="build" />
-	    <jar destfile="build/openawt.jar"
+	    <jar destfile="build/openawt-${major-version-number}.jar"
 	         basedir="bin"
 	         includes="**/*.class"
+	         />
+	    <jar destfile="build/openawt-${major-version-number}.src.jar"
+	         basedir="src"
+	         includes="**/*.java"
 	         />
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>

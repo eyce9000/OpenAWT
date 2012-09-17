@@ -16,6 +16,12 @@ import org.openawt.svg.serialization.PathIteratorTransform;
 import org.openawt.svg.serialization.PolylineTransform;
 import org.openawt.svg.serialization.RegisterMatcher;
 import org.openawt.svg.serialization.StyleTransform;
+import org.openawt.svg.serialization.TransformTransform;
+import org.openawt.svg.transforms.Compound;
+import org.openawt.svg.transforms.Rotate;
+import org.openawt.svg.transforms.Scale;
+import org.openawt.svg.transforms.Transform;
+import org.openawt.svg.transforms.Translate;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementListUnion;
@@ -30,37 +36,51 @@ public class SVGCanvas extends SVGShapeCollection{
 	private String width="100%";
 	@Attribute
 	private String height="100%";
+	
+	public SVGCanvas(){
+		super();
+	}
+	public SVGCanvas(String width,String height){
+		super();
+		this.width = width;
+		this.height = height;
+	}
 
 	/*
 	 * SERIALIZATION
 	 */
-	public static SVGCanvas deserailize(InputStream in) throws Exception{
-		Persister persister = buildXMLSerializer();
+	public static SVGCanvas deserialize(InputStream in) throws Exception{
+		Persister persister = new Persister(buildXMLTypeMatcher());
 		return persister.read(SVGCanvas.class, in);
 	}
 	
-	public static SVGCanvas deserailize(File in) throws Exception{
-		Persister persister = buildXMLSerializer();
+	public static SVGCanvas deserialize(File in) throws Exception{
+		Persister persister = new Persister(buildXMLTypeMatcher());
 		return persister.read(SVGCanvas.class, in);
 	}
 	
 	public void serialize(OutputStream out) throws Exception{
-		Persister persister = buildXMLSerializer();
+		Persister persister = new Persister(buildXMLTypeMatcher());
 		persister.write(this, out);
 	}
 	
 	public void serialize(File out) throws Exception{
-		Persister persister = buildXMLSerializer();
+		Persister persister = new Persister(buildXMLTypeMatcher());
 		persister.write(this, out);
 	}
 	
-	private static Persister buildXMLSerializer(){
+	public static RegisterMatcher buildXMLTypeMatcher(){
 		RegisterMatcher matcher = new RegisterMatcher();
 		matcher.register(Color.class, new ColorTransform());
 		matcher.register(Style.class, new StyleTransform());
 		matcher.register(Polyline2D.class, new PolylineTransform());
 		matcher.register(PathIterator.class, new PathIteratorTransform());
-		Persister persister = new Persister(matcher);
-		return persister;
+		matcher.register(Transform.class, new TransformTransform());
+		matcher.register(Compound.class, new TransformTransform());
+		matcher.register(Rotate.class, new TransformTransform());
+		matcher.register(Translate.class, new TransformTransform());
+		matcher.register(Scale.class, new TransformTransform());
+		return matcher;
 	}
+	
 }

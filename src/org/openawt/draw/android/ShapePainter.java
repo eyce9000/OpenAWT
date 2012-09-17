@@ -1,5 +1,7 @@
 package org.openawt.draw.android;
 
+import java.awt.Graphics2D;
+
 import org.openawt.BasicStroke;
 import org.openawt.Shape;
 import org.openawt.geom.*;
@@ -16,44 +18,55 @@ import android.graphics.Path;
 import android.graphics.Path.FillType;
 
 public class ShapePainter {
-	public static void drawGroup(Canvas c, SVGGroup group,Paint paint){
+	public static void drawGroup(Canvas c, SVGGroup group,Style override){
+		if(override==null)
+			override = group.getStyle();
 		for(SVGShape shape:group){
-			draw(c,shape,paint);
+			if(group.getStyle()!=null)
+				shape.setStyle(group.getStyle());
+			draw(c,shape,override);
 		}
 	}
-	public static void draw(Canvas c, SVGShape s, Paint paint){
-		if(s==null)
+	public static void draw(Canvas c, SVGShape shape){
+		draw(c,shape,null);
+	}
+	public static void draw(Canvas c, SVGShape shape, Style override){
+		if(shape==null)
 			return;
-		if(s instanceof SVGGroup){
-			drawGroup(c,(SVGGroup)s,paint);
+		if(shape instanceof SVGGroup){
+			drawGroup(c,(SVGGroup)shape,override);
 		}
 		else{
-			Style style = s.getStyle();
-			if(style!=null){
-				org.openawt.Color fillColor = style.getStroke();
-				if(fillColor!=null){
-					paint.setColor(fillColor.getARGB());
-					fill(c,s.getShape(),paint);
-				}
-
-				org.openawt.Color strokeColor = style.getStroke();
-				Float strokeWidth = style.getStrokeWidth();
-				
-				if(strokeColor!=null)
-					paint.setColor(strokeColor.getARGB());
-				else
-					paint.setColor(org.openawt.Color.BLACK.getARGB());
-				if(strokeWidth != null)
-					paint.setStrokeWidth(strokeWidth);
-				else
-					paint.setStrokeWidth(1f);
-
-				if(strokeColor!=null || strokeWidth!=null){
-					draw(c, s.getShape(), paint);
-				}
+			Paint paint = new Paint();
+			Style style = override;
+			if(style==null){ //Override style is null
+				style = shape.getStyle();
 			}
+			if(style==null){ //Shape style is null, set it to a black stroke
+				style = new Style().setStroke(org.openawt.Color.BLACK).setFill(org.openawt.Color.NONE).setStrokeWidth(1f);
+			}
+			org.openawt.Color fillColor = style.getFill();
+			if(fillColor!=null && !fillColor.isClear()){
+				paint.setColor(Color.argb(fillColor.getAlpha(), fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue()));
+				fill(c,shape.getShape(),paint);
+			}
+
+			org.openawt.Color strokeColor = style.getStroke();
+			Float strokeWidth = style.getStrokeWidth();
+			
+			if(strokeColor!=null)
+				paint.setColor(Color.argb(strokeColor.getAlpha(), strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue()));
+				//paint.setColor(Color.BLACK);
 			else
-				draw(c,s.getShape(),paint);
+				paint.setColor(Color.BLACK);
+			if(strokeWidth != null)
+				paint.setStrokeWidth(strokeWidth);
+			else
+				paint.setStrokeWidth(2f);
+
+			if(strokeColor!=null || strokeWidth!=null){
+				draw(c, shape.getShape(), paint);
+			}
 		}
 	}
 	public static void draw(Canvas c, Shape s, BasicStroke strokeStyle, Paint paint){

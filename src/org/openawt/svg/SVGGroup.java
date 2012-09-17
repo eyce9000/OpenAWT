@@ -11,6 +11,7 @@ import org.openawt.geom.GeneralPath;
 import org.openawt.geom.PathIterator;
 import org.openawt.geom.Point2D;
 import org.openawt.geom.Rectangle2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementListUnion;
@@ -19,6 +20,7 @@ import org.simpleframework.xml.Root;
 @Root(name="g")
 public class SVGGroup extends SVGShapeCollection implements SVGShape<Shape>{
 	private Style style;
+	private Transform transform;
 
 
 	@Override
@@ -42,4 +44,15 @@ public class SVGGroup extends SVGShapeCollection implements SVGShape<Shape>{
 		return path;
 	}
 	
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
+	}
 }

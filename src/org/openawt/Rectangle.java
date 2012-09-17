@@ -27,7 +27,6 @@ package org.openawt;
 
 import org.openawt.geom.Rectangle2D;
 
-import android.graphics.RectF;
 
 /**
  * A <code>Rectangle</code> specifies an area in a coordinate space that is
@@ -1208,10 +1207,5 @@ public class Rectangle extends Rectangle2D
     public String toString() {
         return getClass().getName() + "[x=" + x + ",y=" + y + ",width=" + width + ",height=" + height + "]";
     }
-
-	public RectF toRectF() {
-		return new RectF(this.x,this.y,this.x+this.width, this.y+this.height);
-	}
-	
 
 }

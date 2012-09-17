@@ -27,8 +27,6 @@ package org.openawt.geom;
 
 import java.io.Serializable;
 
-import android.graphics.PointF;
-
 /**
  * The <code>Point2D</code> class defines a point representing a location
  * in {@code (x,y)} coordinate space.
@@ -139,10 +137,7 @@ public abstract class Point2D implements Cloneable {
          */
         private static final long serialVersionUID = -2870572449815403710L;
         
-        
-        public android.graphics.PointF toAndroidPoint(){
-        	return new android.graphics.PointF(x,y);
-        }
+       
 
     }
 
@@ -229,9 +224,6 @@ public abstract class Point2D implements Cloneable {
          */
         private static final long serialVersionUID = 6150783262733311327L;
         
-        public android.graphics.PointF toAndroidPoint(){
-        	return new android.graphics.PointF((float)x,(float)y);
-        }
     }
 
     /**

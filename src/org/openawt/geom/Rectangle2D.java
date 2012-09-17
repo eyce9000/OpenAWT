@@ -27,7 +27,6 @@ package org.openawt.geom;
 
 import java.io.Serializable;
 
-import android.graphics.RectF;
 
 
 /**
@@ -304,16 +303,6 @@ public abstract class Rectangle2D extends RectangularShape {
          */
         private static final long serialVersionUID = 3798716824173675777L;
         
-        
-
-        /**
-         * Added by GRL for SRL
-         */
-        
-        public RectF toRectF(){
-        	return new RectF(x,y,x+width,y+height);
-        }
-        
     }
 
     /**
@@ -509,13 +498,6 @@ public abstract class Rectangle2D extends RectangularShape {
          */
         private static final long serialVersionUID = 7771313791441850493L;
         
-        /**
-         * Added by GRL for SRL
-         */
-        
-        public RectF toRectF(){
-        	return new RectF((float)x,(float)y,(float)(x+width),(float)(y+height));
-        }
         
     }
 

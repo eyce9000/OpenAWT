@@ -3,6 +3,7 @@ package org.openawt.svg;
 import org.openawt.geom.RectangularShape;
 
 import org.openawt.geom.Rectangle2D;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -13,6 +14,7 @@ public class SVGRectangle implements SVGShape<Rectangle2D>{
 	
 	@Attribute(required=false)
 	private Double rx = null, ry = null;
+	private Transform transform;
 	
 	public SVGRectangle(
 			@Attribute(name="x") double x, 
@@ -73,4 +75,15 @@ public class SVGRectangle implements SVGShape<Rectangle2D>{
 		return rect;
 	}
 
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
+	}
 }

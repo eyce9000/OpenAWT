@@ -2,6 +2,7 @@ package org.openawt.svg;
 
 import org.openawt.geom.Ellipse2D;
 import org.openawt.geom.Ellipse2D.Double;
+import org.openawt.svg.transforms.Transform;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -10,6 +11,7 @@ public class SVGEllipse implements SVGShape<Ellipse2D>{
 	
 	private Style style;
 	private Ellipse2D ellipse;
+	private Transform transform;
 
 	public SVGEllipse(
 			@Attribute(name="cx") double cx, 
@@ -62,5 +64,17 @@ public class SVGEllipse implements SVGShape<Ellipse2D>{
 	@Override
 	public Ellipse2D getShape() {
 		return ellipse;
+	}
+	
+	@Override
+	@Attribute(required = false)
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	@Override
+	@Attribute(required = false)
+	public Transform getTransform() {
+		return this.transform;
 	}
 }
