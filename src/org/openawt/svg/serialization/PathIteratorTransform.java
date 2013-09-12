@@ -35,7 +35,6 @@
  *******************************************************************************/
 package org.openawt.svg.serialization;
 
-import javax.vecmath.Vector2d;
 
 import org.openawt.geom.Line2D;
 import org.openawt.geom.Path2D;

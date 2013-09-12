@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="build" name="openawt">
     <property environment="env"/>
-	<property name="major-version-number" value="0.1" />
+	<property name="major-version-number" value="1.0" />
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
